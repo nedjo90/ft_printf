@@ -122,6 +122,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 void	ft_lst_split(t_list **list, char *str)
 {
 	char	*temp;
+	char	*content;
 	size_t	size;
 
 	if (list == NULL)
@@ -136,7 +137,13 @@ void	ft_lst_split(t_list **list, char *str)
 			str++;
 		}
 		if (size)
-			ft_lstadd_back(list, ft_lstnew(ft_substr(temp, 0, size), 1));
+		{
+			content = ft_substr(temp, 0, size);
+			if (content == NULL)
+				return ;
+			ft_lstadd_back(list, ft_lstnew(content, 1));
+			free(content);
+		}
 		if (ft_isoperator(str))
 		{
 			ft_lstadd_back(list, ft_lstnew("%s", 0));
@@ -157,7 +164,6 @@ void	ft_lstclear(t_list **list)
 		*list=temp;
 	}
 	free(list);
-	*list = NULL;
 	list = NULL;
 }
 
@@ -176,8 +182,8 @@ int	ft_printf(const char *format)
 	if (list != NULL && *list != NULL)
 	{
 		count = ft_display_lst(list);
-		return (count);
 		ft_lstclear(list);
+		return (count);
 	}
 	return (0);
 }
@@ -186,7 +192,7 @@ int	main(void)
 {
 	int	ret;
 
-	ret = ft_printf("%s");
+	ret = ft_printf("coucoujefais un test");
 	printf("*****************************");
 	printf("\n%d", ret);
 	return (0);
