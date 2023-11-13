@@ -6,7 +6,7 @@
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:06:21 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/13 22:41:40 by nhan             ###   ########.fr       */
+/*   Updated: 2023/11/13 23:08:03 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,20 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (str);
 }
 
+void	ft_create_add_back(t_list **list, char *str, size_t len, int type)
+{
+	char	*content;
+
+	content = ft_substr(str, 0, len);
+	if (content == NULL)
+		return ;
+	ft_lstadd_back(list, ft_lstnew(content, type));
+	free(content);
+}
+
 void	ft_lst_split(t_list **list, char *str)
 {
 	char	*temp;
-	char	*content;
 	size_t	size;
 
 	if (list == NULL)
@@ -131,19 +141,13 @@ void	ft_lst_split(t_list **list, char *str)
 	{
 		size = 0;
 		temp = str;
-		while (!ft_isoperator(str))
+		while (*str != '\0' && !ft_isoperator(str))
 		{
-			size++;
 			str++;
+			size++;
 		}
 		if (size)
-		{
-			content = ft_substr(temp, 0, size);
-			if (content == NULL)
-				return ;
-			ft_lstadd_back(list, ft_lstnew(content, 1));
-			free(content);
-		}
+			ft_create_add_back(list, temp, size, 1);
 		if (ft_isoperator(str))
 		{
 			ft_lstadd_back(list, ft_lstnew("%s", 0));
@@ -192,7 +196,7 @@ int	main(void)
 {
 	int	ret;
 
-	ret = ft_printf("coucoujefais un test");
+	ret = ft_printf("%scoucoujefais un test");
 	printf("*****************************");
 	printf("\n%d", ret);
 	return (0);
