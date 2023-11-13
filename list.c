@@ -6,7 +6,7 @@
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:06:21 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/13 23:08:03 by nhan             ###   ########.fr       */
+/*   Updated: 2023/11/13 23:33:05 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,32 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 }
 
+char	*ft_put_operator(char *str)
+{
+}
+
 int	ft_display_lst(t_list **lst)
 {
 	t_list	*suivant;
-	char	temp;
+	char	*temp;
 	size_t	count;
 
 	count = 0;
 	suivant = *lst;
 	while (suivant != NULL)
 	{
-		write (1, suivant->str, ft_strlen(suivant->str));
-		count += ft_strlen(suivant->str);
-		write(1, "=>", 2);
-		temp = suivant->is_str + 48;
-		write(1, &temp, 1);
-		write(1, "\n\n", 1);
+		if (suivant->is_str)
+		{
+			write (1, suivant->str, ft_strlen(suivant->str));
+			count += ft_strlen(suivant->str);
+		}
+		else
+		{
+			temp = ft_put_operator(suivant->str);
+			if (temp == NULL)
+				return(0);
+			count += temp;
+		}
 		suivant = suivant->next;
 	}
 	return (count);
