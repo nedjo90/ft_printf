@@ -6,7 +6,7 @@
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:06:21 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/13 22:01:47 by nhan             ###   ########.fr       */
+/*   Updated: 2023/11/13 22:41:40 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,22 @@ void	ft_lst_split(t_list **list, char *str)
 	}
 }
 
+void	ft_lstclear(t_list **list)
+{
+	t_list	*temp;
+
+	while (*list != NULL)
+	{
+		temp = (*list)->next;
+		free((*list)->str);
+		free(*list);
+		*list=temp;
+	}
+	free(list);
+	*list = NULL;
+	list = NULL;
+}
+
 int	ft_printf(const char *format)
 {
 	t_list	**list;
@@ -161,6 +177,7 @@ int	ft_printf(const char *format)
 	{
 		count = ft_display_lst(list);
 		return (count);
+		ft_lstclear(list);
 	}
 	return (0);
 }
