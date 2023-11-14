@@ -6,7 +6,10 @@ ft_printf.c \
 ft_isoperator.c \
 ft_lst_split.c \
 ft_printf_lstnew.c \
-ft_printf_lstadd_back.c
+ft_printf_lstadd_back.c \
+ft_print_str.c \
+ft_print_char.c \
+ft_print_int.c
 
 CC=gcc
 CFLAGS=-Wall -Wextra -Werror

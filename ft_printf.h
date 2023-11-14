@@ -6,7 +6,7 @@
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 13:22:14 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/14 15:13:04 by nhan             ###   ########.fr       */
+/*   Updated: 2023/11/14 16:34:36 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include "./libft/libft.h"
+# include <limits.h>
 
 typedef struct s_print_list{
 	int				is_str;
@@ -36,5 +37,7 @@ void	ft_lst_split(t_print_list **list, char *str);
 void	ft_print_lstclear(t_print_list **list);
 void	ft_change_operator(t_print_list *list, va_list args);
 int	ft_printf(const char *format, ...);
-
+void	ft_print_str(char *old, char *new);
+void	ft_print_char(char *old, int new);
+void	ft_print_int(char *old, int n);
 #endif
