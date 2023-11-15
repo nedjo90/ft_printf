@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_lstnew.c                                 :+:      :+:    :+:   */
+/*   ft_print_uint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 13:27:57 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/15 00:36:30 by nhan             ###   ########.fr       */
+/*   Created: 2023/11/14 19:21:37 by nhan              #+#    #+#             */
+/*   Updated: 2023/11/14 19:23:50 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_print_list	*ft_printf_lstnew(char *content, int str_bool)
+void	ft_print_uint(char *old, unsigned int n)
 {
-	t_print_list	*new_list;
-
-	new_list = (t_print_list *) malloc (sizeof(t_print_list));
-	if (new_list == NULL)
-		return (NULL);
-	new_list->str = strdup(content);
-	new_list->is_str = str_bool;
-	new_list->len = ft_strlen(new_list->str);
-	new_list->next = NULL;
-	return (new_list);
+	free(old);
+	old = ft_itoa(n);
 }
-

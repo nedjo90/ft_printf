@@ -16,13 +16,14 @@ void	ft_print_lstclear(t_print_list **list)
 {
 	t_print_list	*temp;
 
-	while (*list != NULL)
+	while ((*list)->next != NULL)
 	{
 		temp = (*list)->next;
 		free((*list)->str);
 		free(*list);
 		*list=temp;
 	}
+	free((*list)->str);
+	free(*list);
 	free(list);
-	list = NULL;
 }

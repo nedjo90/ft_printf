@@ -6,7 +6,7 @@
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 13:22:14 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/14 16:34:36 by nhan             ###   ########.fr       */
+/*   Updated: 2023/11/15 00:36:44 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 typedef struct s_print_list{
 	int				is_str;
+	size_t				len;
 	char			*str;
 	struct s_print_list	*next;
 }	t_print_list;
@@ -40,4 +41,5 @@ int	ft_printf(const char *format, ...);
 void	ft_print_str(char *old, char *new);
 void	ft_print_char(char *old, int new);
 void	ft_print_int(char *old, int n);
+void	ft_print_uint(char *old, unsigned int n);
 #endif

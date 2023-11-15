@@ -9,10 +9,11 @@ ft_printf_lstnew.c \
 ft_printf_lstadd_back.c \
 ft_print_str.c \
 ft_print_char.c \
-ft_print_int.c
+ft_print_int.c \
+ft_print_uint.c
 
 CC=gcc
-CFLAGS=-Wall -Wextra -Werror
+CFLAGS=-g -fsanitize=address -Wall -Wextra -Werror
 OBJ=$(SRCS:.c=.o)
 AR=ar rcs
 RM=rm -rf
@@ -27,7 +28,10 @@ test: $(NAME)
 	$(CC) $(CFLAGS) main.c $(NAME)
 	rm -rf $(NAME)
 	clear
-	./a.out
+	./a.out > main
+	$(CC) -w testeur.c
+	./a.out > testeur
+	diff -au main testeur
 
 $(NAME): $(OBJ)
 	make -C libft/
@@ -44,4 +48,3 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
