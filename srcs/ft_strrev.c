@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_int.c                                     :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 16:27:45 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/14 16:32:11 by nhan             ###   ########.fr       */
+/*   Created: 2023/11/22 13:43:38 by nhan              #+#    #+#             */
+/*   Updated: 2023/11/22 13:45:17 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "ft_printf.h"
 
-void	ft_print_int(char *old, int n)
+void	ft_strrev(char *str)
 {
-	free(old);
-	old = ft_itoa(n);
+	char	t;
+	int		i;
+	int		j;
+
+	i = ft_strlen(str) - 1;
+	j = 0;
+	while (j <= i / 2)
+	{
+		t = str[j];
+		str[j] = str[i - j];
+		str[i - j] = t;
+		j++;
+	}
 }

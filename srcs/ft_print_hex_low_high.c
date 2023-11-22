@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_lstnew.c                                 :+:      :+:    :+:   */
+/*   ft_print_hex_low_high.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 13:27:57 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/15 00:36:30 by nhan             ###   ########.fr       */
+/*   Created: 2023/11/22 16:33:03 by nhan              #+#    #+#             */
+/*   Updated: 2023/11/22 19:39:40 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_print_list	*ft_printf_lstnew(char *content, int str_bool)
+void	ft_print_hex_low_high(t_list *list, unsigned int nb, int low_high)
 {
-	t_print_list	*new_list;
-
-	new_list = (t_print_list *) malloc (sizeof(t_print_list));
-	if (new_list == NULL)
-		return (NULL);
-	new_list->str = strdup(content);
-	new_list->is_str = str_bool;
-	new_list->len = ft_strlen(new_list->str);
-	new_list->next = NULL;
-	return (new_list);
+	free(list->content);
+	list->content = ft_uint_to_hex(nb, low_high);
+	list->len = ft_strlen(list->content);
 }
-

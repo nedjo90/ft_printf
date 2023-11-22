@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_lstadd_back.c                            :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 13:29:01 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/14 13:29:36 by nhan             ###   ########.fr       */
+/*   Created: 2023/11/22 14:26:53 by nhan              #+#    #+#             */
+/*   Updated: 2023/11/22 19:41:36 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_printf_lstadd_back(t_print_list **lst, t_print_list *new)
+void	ft_print_str(t_list *list, char *str)
 {
-	t_print_list	*temp;
-
-	if (lst == NULL || new == NULL)
-		return ;
-	if (*lst == NULL)
-		*lst = new;
+	free(list->content);
+	if (str)
+		list->content = ft_strdup(str);
 	else
-	{
-		temp = *lst;
-		while (temp->next != NULL)
-			temp = temp->next;
-		temp->next = new;
-	}
+		list->content = ft_strdup("(null)");
+	list->len = ft_strlen(list->content);
 }
-

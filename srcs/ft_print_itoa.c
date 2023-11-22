@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_print_itoa.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 16:12:45 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/14 16:21:16 by nhan             ###   ########.fr       */
+/*   Created: 2023/11/22 13:48:28 by nhan              #+#    #+#             */
+/*   Updated: 2023/11/22 19:40:06 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_char(char *old, int new)
+void	ft_print_itoa(t_list *list, int nb)
 {
-	free(old);
-	old = (char *) malloc (2 * sizeof(char));
-	old[0] = new;
-	old[1] = '\0';
+	free(list->content);
+	list->content = ft_itoa(nb);
+	list->len = ft_strlen(list->content);
 }

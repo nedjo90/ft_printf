@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_lstclear.c                                :+:      :+:    :+:   */
+/*   ft_print_percent.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 13:35:20 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/14 13:35:40 by nhan             ###   ########.fr       */
+/*   Created: 2023/11/22 14:27:55 by nhan              #+#    #+#             */
+/*   Updated: 2023/11/22 19:20:47 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_lstclear(t_print_list **list)
+void	ft_print_percent(t_list *list)
 {
-	t_print_list	*temp;
-
-	while ((*list)->next != NULL)
-	{
-		temp = (*list)->next;
-		free((*list)->str);
-		free(*list);
-		*list=temp;
-	}
-	free((*list)->str);
-	free(*list);
-	free(list);
+	free(list->content);
+	list->content = ft_strdup("%");
+	list->len = 1;
 }

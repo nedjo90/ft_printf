@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_print_uitoa.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 15:27:18 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/15 00:08:28 by nhan             ###   ########.fr       */
+/*   Created: 2023/11/22 15:16:38 by nhan              #+#    #+#             */
+/*   Updated: 2023/11/22 19:42:03 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_str(char *old, char *new)
+void	ft_print_uitoa(t_list *list, unsigned int nb)
 {
-	free(old);
-	if (new == NULL)
-		old = ft_strdup("(null)");
-	else if (new) 
-		old = ft_strdup(new);
-	else
-	{
-		old = (char *) malloc (sizeof(char) * 2);
-		old[0] = *new;
-		old[1] = '\0';
-	}
+	free(list->content);
+	list->content = ft_uitoa(nb);
+	list->len = ft_strlen(list->content);
 }

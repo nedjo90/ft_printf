@@ -5,34 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 13:37:22 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/14 13:37:45 by nhan             ###   ########.fr       */
+/*   Created: 2023/11/18 15:34:22 by nhan              #+#    #+#             */
+/*   Updated: 2023/11/20 10:04:48 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "../libft/libft.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_printf(char const *fmt, ...)
 {
-	t_print_list	**list;
-	size_t	count;
+	t_list	**list;
+	int		size;
 	va_list	args;
 
-	if (format == NULL)
-		return (0);
-	list = (t_print_list **) malloc (sizeof(t_print_list *));
-	if (list == NULL)
-		return (0);
-	*list = NULL;
-	ft_lst_split(list, (char *)format);
-	va_start(args, format);
-	ft_change_operator(*list, args);
+	list = ft_lstsplit(fmt);
+	va_start(args, fmt);
+	ft_replace(list, args);
 	va_end(args);
-	if (list != NULL && *list != NULL)
-	{
-		count = ft_display_lst(list);
-		ft_print_lstclear(list);
-		return (count);
-	}
-	return (0);
+	size = ft_lst_display(*list);
+	free(list);
+	return (size);
 }
