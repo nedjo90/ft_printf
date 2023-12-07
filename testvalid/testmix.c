@@ -24,7 +24,7 @@ int main(void)
 	void *a12;
 
 	FILE *reel;
-	reel = fopen("reeloutput", "wb");
+	reel = fopen("reeloutput", "ab");
 
 		
 

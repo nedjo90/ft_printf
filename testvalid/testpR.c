@@ -24,7 +24,7 @@ int main(void)
 	void *a12;
 
 	FILE *reel;
-	reel = fopen("reeloutput", "wb");
+	reel = fopen("reeloutput", "ab");
 	//test 0
 	fprintf(reel, "test %d|", test++);
 	n = fprintf(reel, "%.0p", (NULL)); //
