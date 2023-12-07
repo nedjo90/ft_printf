@@ -6,7 +6,7 @@
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 15:50:43 by nhan              #+#    #+#             */
-/*   Updated: 2023/12/06 22:54:07 by nhan             ###   ########.fr       */
+/*   Updated: 2023/12/07 10:26:49 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_option_itoa(char *str, t_list *list)
 {
 	if (list->periode && list->precision == 0 && ft_atoi(str) == 0)
 		ft_periode_zero_int(str);
-	else if (list->periode && list->precision > (int)ft_strlen(str))
+	else if (list->periode && list->precision >= (int)ft_strlen(str))
 		str = ft_periode_int(str, list->precision);
 	if (list->plus && str[0] != '-' && list->periode \
 		&& list->precision == 0 && ft_strlen(str) == 1)

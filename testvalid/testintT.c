@@ -23,6 +23,40 @@ int main(void)
 	char *a11;
 	void *a12;
 
+
+	printf("test %d|", test++);
+	n = printf(" %.2d ", -1);
+	printf("|%d\n", n);
+	
+	printf("test %d|", test++);
+	n = printf(" %.3d ", -11);
+	printf("|%d\n", n);
+	
+	printf("test %d|", test++);
+	n = printf(" %.3d ", -99);
+	printf("|%d\n", n);
+	
+	printf("test %d|", test++);
+	n = printf(" %.4d ", -101);
+	printf("|%d\n", n);
+	
+	printf("test %d|", test++);
+	n = printf(" %.2i ", -1);
+	printf("|%d\n", n);
+	
+	printf("test %d|", test++);
+	n = printf(" %.3i ", -11);
+	printf("|%d\n", n);
+	
+	printf("test %d|", test++);
+	n = printf(" %.3i ", -99);
+	printf("|%d\n", n);
+	
+	printf("test %d|", test++);
+	n = printf(" %.4i ", -101);
+	printf("|%d\n", n);
+	
+/*
 		//test 0
 		ft_printf("test %d|", test++);
 		n = ft_printf("%+.5i", 42);
@@ -2603,5 +2637,5 @@ int main(void)
 	ft_printf("test %d|", test++);
 	n = ft_printf("coucou %-5.d un autre %0+- .10d hey %0-8.5d encore %+.d enfin %+-3.3d", id, 42, 100, INT_MAX, INT_MIN);
 	ft_printf("|%d\n", n);
-
+*/
 }
