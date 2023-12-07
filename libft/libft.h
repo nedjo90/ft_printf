@@ -6,7 +6,7 @@
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:21:47 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/22 20:14:12 by nhan             ###   ########.fr       */
+/*   Updated: 2023/12/05 13:58:03 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -26,6 +26,14 @@ typedef struct s_list
 {
 	char			*content;
 	int				len;
+	int				minus;
+	int				zero;
+	int				plus;
+	int				space;
+	int				sharp;
+	int				width;
+	int				periode;
+	int				precision;
 	struct s_list	*next;
 }	t_list;
 /*
@@ -33,31 +41,6 @@ typedef struct s_list
 
 
 */
-//PART1
-//test
-int			test_isalpha(void);
-int			test_isdigit(void);
-int			test_isalnum(void);
-int			test_isascii(void);
-int			test_isprint(void);
-int			test_strlen(void);
-int			test_memset(void);
-int			test_bzero(void);
-int			test_memcpy(void);
-int			test_memmove(void);
-int			test_strlcpy(void);
-int			test_strlcat(void);
-int			test_toupper(void);
-int			test_tolower(void);
-int			test_strchr(void);
-int			test_strrchr(void);
-int			test_strncmp(void);
-int			test_memchr(void);
-int			test_memcmp(void);
-int			test_strnstr(void);
-int			test_atoi(void);
-int			test_calloc(void);
-int			test_strdup(void);
 //fonction
 char		*ft_strchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);
@@ -87,19 +70,6 @@ void		*ft_calloc(size_t count, size_t size);
 
 
 */
-//PART2
-//test
-int			test_substr(void);
-int			test_strjoin(void);
-int			test_strtrim(void);
-int			test_split(void);
-int			test_itoa(void);
-int			test_strmapi(void);
-int			test_striteri(void);
-int			test_putchar_fd(void);
-int			test_putstr_fd(void);
-int			test_putendl_fd(void);
-int			test_putnbr_fd(void);
 //fonction
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
@@ -118,15 +88,6 @@ void		ft_putnbr_fd(int n, int fd);
 
 
 */
-//BONUS
-//test
-int			test_lstnew(void);
-int			test_lstadd_front(void);
-int			test_lstsize(void);
-int			test_lstlast(void);
-int			test_lstadd_back(void);
-int			test_lstdelone(void);
-int			test_lstclear(void);
 //function
 t_list		*ft_lstnew(char *content);
 void		ft_lstadd_front(t_list **lst, t_list *new);
@@ -137,17 +98,4 @@ void		ft_lstiter(t_list *lst, void (*f)(void *));
 void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
-/*
-
-
-
-*/
-//PERSO
-//test
-//int			test_isspace(void);
-//fonction
-//int			ft_isspace(int c);
-//int			ft_char_in_str(char const *str, char c);
-//int			ft_count_char_in_str(char *str, char c);
-//int			ft_index_strchr(char const *s, char c);
 #endif

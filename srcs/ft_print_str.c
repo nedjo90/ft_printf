@@ -6,7 +6,7 @@
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:26:53 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/22 19:41:36 by nhan             ###   ########.fr       */
+/*   Updated: 2023/12/06 14:39:13 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 void	ft_print_str(t_list *list, char *str)
 {
+	char	*temp;
+
+	ft_scan_option(&list);
 	free(list->content);
 	if (str)
-		list->content = ft_strdup(str);
+		temp = ft_strdup(str);
 	else
-		list->content = ft_strdup("(null)");
+		temp = ft_strdup("(null)");
+	list->content = ft_option_str(temp, list);
 	list->len = ft_strlen(list->content);
 }

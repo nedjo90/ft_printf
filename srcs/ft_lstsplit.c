@@ -6,26 +6,18 @@
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:56:09 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/20 09:20:38 by nhan             ###   ########.fr       */
+/*   Updated: 2023/12/06 11:04:56 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	ft_iskey(int c)
-{
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i'\
-		|| c == 'u' || c == 'x' || c == 'X' || c == '%')
-		return (1);
-	return (0);
-}
 
 int	ft_operator(char const *fmt, t_list **list)
 {
 	int		i;
 
 	i = 1;
-	while (fmt[i] != '\0' && ft_isdigit(fmt[i]))
+	while (fmt[i] != '\0' && !ft_iskey(fmt[i]))
 		i++;
 	if (ft_iskey(fmt[i]))
 		i++;
@@ -40,7 +32,7 @@ t_list	**ft_lstsplit(char const *fmt)
 	int		j;
 
 	list = (t_list **) malloc (sizeof(t_list *));
-	if (list == NULL)
+	if (!list)
 		return (NULL);
 	*list = NULL;
 	i = 0;

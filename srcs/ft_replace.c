@@ -6,7 +6,7 @@
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:40:39 by nhan              #+#    #+#             */
-/*   Updated: 2023/11/22 17:07:03 by nhan             ###   ########.fr       */
+/*   Updated: 2023/12/05 14:35:04 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,29 @@
 
 void	ft_replace(t_list **list, va_list args)
 {
-	t_list	*temp;
+	char	*temp;
+	t_list	*t_temp;
+	size_t	i;
 
-	temp = *list;
-	while (temp != NULL)
+	t_temp = *list;
+	while (t_temp != NULL)
 	{
-		if (temp->content[0] == '%' && temp->content[1] == 'c')
-			ft_print_char(temp, va_arg(args, int));
-		else if (temp->content[0] == '%' && temp->content[1] == 's')
-			ft_print_str(temp, va_arg(args, char *));
-		else if (temp->content[0] == '%' && temp->content[1] == '%')
-			ft_print_percent(temp);
-		else if (temp->content[0] == '%' && temp->content[1] == 'p')
-			ft_print_address(temp, va_arg(args, long));
-		else if (temp->content[0] == '%' && (temp->content[1] == 'd'\
-			|| temp->content[1] == 'i'))
-			ft_print_itoa(temp, va_arg(args, int));
-		else if (temp->content[0] == '%' && temp->content[1] == 'u')
-			ft_print_uitoa(temp, va_arg(args, int));
-		else if (temp->content[0] == '%' && temp->content[1] == 'x')
-			ft_print_hex_low_high(temp, va_arg(args, int), 0);
-		else if (temp->content[0] == '%' && temp->content[1] == 'X')
-			ft_print_hex_low_high(temp, va_arg(args, int), 1);
-		temp = temp->next;
+		temp = t_temp->content;
+		i = ft_strlen(temp) - 1;
+		if (temp[0] == '%' && temp[i] == 'c')
+			ft_print_char(t_temp, va_arg(args, int));
+		else if (temp[0] == '%' && temp[i] == 's')
+			ft_print_str(t_temp, va_arg(args, char *));
+		else if (temp[0] == '%' && temp[i] == '%')
+			ft_print_percent(t_temp);
+		else if (temp[0] == '%' && temp[i] == 'p')
+			ft_print_address(t_temp, va_arg(args, long));
+		else if (temp[0] == '%' && (temp[i] == 'd' || temp[i] == 'i'))
+			ft_print_itoa(t_temp, va_arg(args, int));
+		else if (temp[0] == '%' && temp[i] == 'u')
+			ft_print_uitoa(t_temp, va_arg(args, int));
+		else if (temp[0] == '%' && (temp[i] == 'x' || temp[i] == 'X'))
+			ft_print_hex_low_high(t_temp, va_arg(args, int));
+		t_temp = t_temp->next;
 	}
 }
