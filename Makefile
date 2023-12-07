@@ -71,4 +71,6 @@ run: re
 	$(CC) -w reel.c $(NAME) -I includes
 	@./a.out > reel
 	@./mem_check.sh
-
+	@make fclean
+	@rm -rf test reel
+	@rm -rf a.out
