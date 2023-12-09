@@ -6,7 +6,7 @@
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:40:39 by nhan              #+#    #+#             */
-/*   Updated: 2023/12/09 12:36:29 by nhan             ###   ########.fr       */
+/*   Updated: 2023/12/09 18:26:29 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_replace(t_list **list, va_list args)
 	size_t	i;
 
 	t_temp = *list;
-	while (t_temp != NULL)
+	while (t_temp != NULL && list)
 	{
 		temp = t_temp->content;
 		i = ft_strlen(temp) - 1;

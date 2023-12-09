@@ -6,7 +6,7 @@
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:16:38 by nhan              #+#    #+#             */
-/*   Updated: 2023/12/06 22:02:10 by nhan             ###   ########.fr       */
+/*   Updated: 2023/12/09 18:25:00 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ void	ft_print_uitoa(t_list *list, unsigned int nb)
 {
 	char	*temp;
 
-	ft_scan_option(&list);
+	if (!list)
+		return ;
 	free(list->content);
 	temp = ft_uitoa(nb);
-	list->content = ft_option_uitoa(temp, list);
+	if (!temp)
+		return ;
+	list->content = temp;
 	list->len = ft_strlen(list->content);
 }

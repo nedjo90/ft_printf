@@ -6,7 +6,7 @@
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 15:34:22 by nhan              #+#    #+#             */
-/*   Updated: 2023/12/05 13:02:04 by nhan             ###   ########.fr       */
+/*   Updated: 2023/12/09 15:37:12 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_printf(char const *fmt, ...)
 	int		size;
 	va_list	args;
 
+	if (!fmt)
+		return (-1);
 	list = ft_lstsplit(fmt);
 	va_start(args, fmt);
 	ft_replace(list, args);
