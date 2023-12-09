@@ -6,7 +6,7 @@
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:56:09 by nhan              #+#    #+#             */
-/*   Updated: 2023/12/09 18:11:56 by nhan             ###   ########.fr       */
+/*   Updated: 2023/12/09 18:32:55 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ t_list	**ft_lstsplit(char const *fmt)
 	int		i;
 	int		j;
 
+	if (!fmt)
+		return (NULL);
 	list = (t_list **) malloc (sizeof(t_list *));
 	if (!list)
 		return (NULL);
