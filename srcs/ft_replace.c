@@ -6,7 +6,7 @@
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:40:39 by nhan              #+#    #+#             */
-/*   Updated: 2023/12/05 14:35:04 by nhan             ###   ########.fr       */
+/*   Updated: 2023/12/09 12:36:29 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_replace(t_list **list, va_list args)
 			ft_print_char(t_temp, va_arg(args, int));
 		else if (temp[0] == '%' && temp[i] == 's')
 			ft_print_str(t_temp, va_arg(args, char *));
-		else if (temp[0] == '%' && temp[i] == '%')
+		else if (temp[0] == '%' && temp[i] == '%' && ft_strlen(temp) > 1)
 			ft_print_percent(t_temp);
 		else if (temp[0] == '%' && temp[i] == 'p')
 			ft_print_address(t_temp, va_arg(args, long));
