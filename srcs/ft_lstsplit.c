@@ -6,7 +6,7 @@
 /*   By: nhan <necat.han42@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:56:09 by nhan              #+#    #+#             */
-/*   Updated: 2023/12/09 18:32:55 by nhan             ###   ########.fr       */
+/*   Updated: 2023/12/09 19:17:34 by nhan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,35 @@
 
 static int	ft_operator(char const *fmt, t_list **list)
 {
+	char	*temp;
 	int		i;
 
 	if (!fmt || !list)
+		return (-1);
+	if (*fmt == '\0')
 		return (0);
 	i = 1;
 	while (fmt[i] != '\0' && !ft_iskey(fmt[i]))
 		i++;
 	if (ft_iskey(fmt[i]))
 		i++;
-	ft_lstadd_back(list, ft_lstnew(ft_substr(fmt, 0, i)));
+	temp = ft_substr(fmt, 0, i);
+	if (!temp)
+		return (-1);
+	ft_lstadd_back(list, ft_lstnew(temp));
 	return (i);
+}
+
+static void	add_back_str(t_list **list, const char *fmt, int start, int end)
+{
+	char	*temp;
+
+	if (!list || !fmt || !(end > start))
+		return ;
+	temp = ft_substr(fmt, start, end - start);
+	if (!temp)
+		return ;
+	ft_lstadd_back(list, ft_lstnew(temp));
 }
 
 t_list	**ft_lstsplit(char const *fmt)
@@ -45,10 +63,11 @@ t_list	**ft_lstsplit(char const *fmt)
 		j = i;
 		while (fmt[i] != '%' && fmt[i] != '\0')
 			i++;
-		if (i > j)
-			ft_lstadd_back(list, ft_lstnew(ft_substr(fmt, j, i - j)));
-		if (fmt[i] != '\0')
-			i += ft_operator(&fmt[i], list);
+		add_back_str(list, fmt, j, i);
+		j = ft_operator(&fmt[i], list);
+		if (j == -1)
+			return (NULL);
+		i += j;
 	}
 	return (list);
 }
